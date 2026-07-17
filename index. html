@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Motion of Heritage</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= Loader ================= -->
+
+<div id="loader">
+
+    <div class="loaderLogo">
+        <span>MOTION</span>
+    </div>
+
+</div>
+
+<!-- ================= Cursor ================= -->
+
+<div class="cursor"></div>
+
+<!-- ================= Background ================= -->
+
+<div class="gradient1"></div>
+<div class="gradient2"></div>
+
+<div id="particles"></div>
+
+<!-- ================= Navbar ================= -->
+
+<nav>
+
+<div class="logo">
+
+A Motion of Heritage
+
+</div>
+
+<ul>
+
+<li><a href="#hero">Home</a></li>
+
+<li><a href="#intro">Introduction</a></li>
+
+<li><a href="#timeline">Timeline</a></li>
+
+<li><a href="#performance">Performance</a></li>
+
+</ul>
+
+</nav>
+
+<!-- ================= Hero ================= -->
+
+<section id="hero">
+
+<div class="heroText">
+
+<span class="badge">
+
+Interactive Storytelling
+
+</span>
+
+<h1>
+
+A Motion of Heritage
+
+</h1>
+
+<h3>
+
+Interlinking the Evolution of Motorcars with the Vibrant Cultural Heritages of Jharkhand and Telangana
+
+</h3>
+
+<div class="buttons">
+
+<button class="primary">
+
+Explore
+
+</button>
+
+<button class="secondary">
+
+Watch Journey
+
+</button>
+
+</div>
+
+</div>
+
+<div class="heroVisual">
+
+<div class="glassCard">
+
+<h2>
+
+Engineering × Culture
+
+</h2>
+
+<p>
+
+Tracing handcrafted beginnings to electric mobility while celebrating tribal arts, metalcraft, dance and sustainable design.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= Introduction ================= -->
+
+<section id="intro">
+
+<div class="sectionTitle">
+
+<h2>The Parallel Paths</h2>
+
+</div>
+
+<div class="introGrid">
+
+<div>
+
+<p>
+
+Just as engine design traveled from bespoke, handcrafted mechanics to streamlined, sustainable power, the cultural textures of Jharkhand and Telangana evolved side by side with the changing times.
+
+</p>
+
+</div>
+
+<div class="stats">
+
+<div>
+
+<h2>4</h2>
+
+<span>Eras</span>
+
+</div>
+
+<div>
+
+<h2>8</h2>
+
+<span>Traditions</span>
+
+</div>
+
+<div>
+
+<h2>2</h2>
+
+<span>States</span>
+
+</div>
+
+<div>
+
+<h2>100+</h2>
+
+<span>Years</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- Timeline Starts Here -->
+<section id="timeline">
+
+<!-- Coming Next -->
+
+</section>
+
+<!-- Performance Starts Here -->
+
+<section id="performance">
+
+<!-- GT-R & Supra -->
+
+</section>
+
+<footer>
+
+<h3>
+
+Designed with Heritage & Motion
+
+</h3>
+
+<p>
+
+© 2026
+
+</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
