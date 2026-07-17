@@ -1,0 +1,392 @@
+/*==========================================
+A Motion of Heritage
+Premium JavaScript
+Part 1
+==========================================*/
+
+/*=============
+LOADER
+=============*/
+
+window.addEventListener("load",()=>{
+
+const loader=document.getElementById("loader");
+
+loader.style.opacity="0";
+
+loader.style.visibility="hidden";
+
+loader.style.transition="1s";
+
+});
+
+/*=============
+CUSTOM CURSOR
+=============*/
+
+const cursor=document.querySelector(".cursor");
+
+document.addEventListener("mousemove",(e)=>{
+
+cursor.style.left=e.clientX+"px";
+
+cursor.style.top=e.clientY+"px";
+
+});
+
+/*=============
+SCROLL REVEAL
+=============*/
+
+const revealElements=document.querySelectorAll(
+
+".timelineCard,.glassCard,.stats div,.carCard"
+
+);
+
+const revealObserver=new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach((entry)=>{
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("active");
+
+}
+
+});
+
+},
+
+{
+
+threshold:0.15
+
+}
+
+);
+
+revealElements.forEach((el)=>{
+
+el.classList.add("reveal");
+
+revealObserver.observe(el);
+
+});
+
+/*=============
+NAVBAR
+=============*/
+
+const nav=document.querySelector("nav");
+
+window.addEventListener("scroll",()=>{
+
+if(window.scrollY>80){
+
+nav.style.background="rgba(15,23,42,.88)";
+
+nav.style.boxShadow="0 15px 40px rgba(0,0,0,.25)";
+
+}else{
+
+nav.style.background="rgba(15,23,42,.45)";
+
+nav.style.boxShadow="none";
+
+}
+
+});
+
+/*=============
+SMOOTH BUTTONS
+=============*/
+
+document.querySelectorAll("a").forEach(link=>{
+
+link.addEventListener("click",(e)=>{
+
+const href=link.getAttribute("href");
+
+if(href.startsWith("#")){
+
+e.preventDefault();
+
+document.querySelector(href).scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+});
+
+});
+
+/*=============
+STATS COUNTER
+=============*/
+
+const counters=document.querySelectorAll(".stats h2");
+
+const counterObserver=new IntersectionObserver(
+
+(entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+let counter=entry.target;
+
+let target=parseInt(counter.innerText);
+
+let current=0;
+
+let speed=Math.max(1,Math.floor(target/80));
+
+let update=()=>{
+
+current+=speed;
+
+if(current>=target){
+
+counter.innerText=target+"+";
+
+}else{
+
+counter.innerText=current;
+
+requestAnimationFrame(update);
+
+}
+
+};
+
+update();
+
+}
+
+});
+
+},
+
+{
+
+threshold:.6
+
+}
+
+);
+/*==========================================
+PART 2
+Advanced Animations
+==========================================*/
+
+/*=============
+SCROLL PROGRESS BAR
+=============*/
+
+const progress=document.createElement("div");
+progress.id="progressBar";
+document.body.appendChild(progress);
+
+window.addEventListener("scroll",()=>{
+
+const height=document.documentElement.scrollHeight-window.innerHeight;
+
+const scrolled=(window.scrollY/height)*100;
+
+progress.style.width=scrolled+"%";
+
+});
+
+/*=============
+HERO PARALLAX
+=============*/
+
+const hero=document.querySelector("#hero");
+
+window.addEventListener("scroll",()=>{
+
+const y=window.scrollY;
+
+hero.style.transform=`translateY(${y*0.25}px)`;
+
+});
+
+/*=============
+TIMELINE CARDS
+=============*/
+
+const timelineCards=document.querySelectorAll(".timelineCard");
+
+timelineCards.forEach(card=>{
+
+card.addEventListener("mouseenter",()=>{
+
+card.style.transform="translateY(-15px) scale(1.02)";
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform="translateY(0px) scale(1)";
+
+});
+
+});
+
+/*=============
+3D PERFORMANCE CARDS
+=============*/
+
+const cards=document.querySelectorAll(".carCard");
+
+cards.forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+const rect=card.getBoundingClientRect();
+
+const x=e.clientX-rect.left;
+
+const y=e.clientY-rect.top;
+
+const rotateY=((x/rect.width)-0.5)*20;
+
+const rotateX=((y/rect.height)-0.5)*-20;
+
+card.style.transform=
+
+`perspective(1000px)
+ rotateX(${rotateX}deg)
+ rotateY(${rotateY}deg)
+ scale(1.03)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.transform=
+
+"perspective(1000px) rotateX(0) rotateY(0) scale(1)";
+
+});
+
+});
+
+/*=============
+FLOATING PARTICLES
+=============*/
+
+const particleContainer=document.getElementById("particles");
+
+for(let i=0;i<40;i++){
+
+const p=document.createElement("span");
+
+p.className="particle";
+
+p.style.left=Math.random()*100+"vw";
+
+p.style.top=Math.random()*100+"vh";
+
+p.style.animationDuration=
+
+6+Math.random()*8+"s";
+
+p.style.animationDelay=
+
+Math.random()*5+"s";
+
+particleContainer.appendChild(p);
+
+}
+
+/*=============
+BUTTON RIPPLE
+=============*/
+
+document.querySelectorAll("button").forEach(btn=>{
+
+btn.addEventListener("click",(e)=>{
+
+const ripple=document.createElement("span");
+
+ripple.className="ripple";
+
+const rect=btn.getBoundingClientRect();
+
+ripple.style.left=e.clientX-rect.left+"px";
+
+ripple.style.top=e.clientY-rect.top+"px";
+
+btn.appendChild(ripple);
+
+setTimeout(()=>{
+
+ripple.remove();
+
+},700);
+
+});
+
+});
+
+/*=============
+ACTIVE NAVIGATION
+=============*/
+
+const sections=document.querySelectorAll("section");
+const navLinks=document.querySelectorAll("nav a");
+
+window.addEventListener("scroll",()=>{
+
+let current="";
+
+sections.forEach(sec=>{
+
+const top=sec.offsetTop-150;
+
+if(window.scrollY>=top){
+
+current=sec.id;
+
+}
+
+});
+
+navLinks.forEach(link=>{
+
+link.classList.remove("active");
+
+if(link.getAttribute("href")==="#"+current){
+
+link.classList.add("active");
+
+}
+
+});
+
+});
+
+/*=============
+FADE HERO CONTENT
+=============*/
+
+window.addEventListener("scroll",()=>{
+
+const opacity=Math.max(0,1-window.scrollY/500);
+
+document.querySelector(".heroText").style.opacity=opacity;
+
+});
+
+/*=============
+END PART 2
+=============*/
+counters.forEach(counterObserver.observe.bind(counterObserver));
