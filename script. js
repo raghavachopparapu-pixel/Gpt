@@ -390,3 +390,199 @@ document.querySelector(".heroText").style.opacity=opacity;
 END PART 2
 =============*/
 counters.forEach(counterObserver.observe.bind(counterObserver));
+/*==========================================
+PART 3
+Premium Interactions
+==========================================*/
+
+/*=========================
+Mouse Spotlight
+=========================*/
+
+const spotlight=document.createElement("div");
+
+spotlight.id="spotlight";
+
+document.body.appendChild(spotlight);
+
+document.addEventListener("mousemove",(e)=>{
+
+spotlight.style.left=e.clientX+"px";
+
+spotlight.style.top=e.clientY+"px";
+
+});
+
+/*=========================
+Hero Title Animation
+=========================*/
+
+const heroTitle=document.querySelector(".heroText h1");
+
+heroTitle.innerHTML=heroTitle.innerText
+
+.split("")
+
+.map(letter=>`<span class="letter">${letter===" "?"&nbsp;":letter}</span>`)
+
+.join("");
+
+document.querySelectorAll(".letter").forEach((letter,index)=>{
+
+setTimeout(()=>{
+
+letter.classList.add("show");
+
+},index*40);
+
+});
+
+/*=========================
+Timeline Expand
+=========================*/
+
+document.querySelectorAll(".timelineCard").forEach(card=>{
+
+card.addEventListener("click",()=>{
+
+document.querySelectorAll(".timelineCard").forEach(c=>{
+
+if(c!==card){
+
+c.classList.remove("expanded");
+
+}
+
+});
+
+card.classList.toggle("expanded");
+
+});
+
+});
+
+/*=========================
+Performance Card Shine
+=========================*/
+
+document.querySelectorAll(".carCard").forEach(card=>{
+
+card.addEventListener("mousemove",(e)=>{
+
+const x=e.offsetX/card.offsetWidth*100;
+
+const y=e.offsetY/card.offsetHeight*100;
+
+card.style.background=
+
+`radial-gradient(circle at ${x}% ${y}%,
+rgba(212,175,55,.18),
+rgba(255,255,255,.05) 45%)`;
+
+});
+
+card.addEventListener("mouseleave",()=>{
+
+card.style.background="rgba(255,255,255,.05)";
+
+});
+
+});
+
+/*=========================
+Floating Animation
+=========================*/
+
+document.querySelectorAll(".glassCard,.carCard").forEach((card,index)=>{
+
+setInterval(()=>{
+
+card.style.transform=`translateY(${Math.sin(Date.now()/1000+index)*5}px)`;
+
+},30);
+
+});
+
+/*=========================
+Scroll Fade
+=========================*/
+
+window.addEventListener("scroll",()=>{
+
+const scroll=window.scrollY;
+
+document.querySelectorAll("section").forEach(section=>{
+
+const offset=section.offsetTop;
+
+const distance=Math.abs(scroll-offset);
+
+section.style.opacity=Math.max(.45,1-distance/1600);
+
+});
+
+});
+
+/*=========================
+Animated Numbers
+=========================*/
+
+document.querySelectorAll(".spec h3").forEach(num=>{
+
+const target=parseInt(num.innerText);
+
+if(isNaN(target)) return;
+
+let value=0;
+
+const timer=setInterval(()=>{
+
+value++;
+
+num.innerText=value;
+
+if(value>=target){
+
+clearInterval(timer);
+
+}
+
+},12);
+
+});
+
+/*=========================
+Random Glow
+=========================*/
+
+setInterval(()=>{
+
+document.querySelectorAll(".timelineNode").forEach(node=>{
+
+node.style.boxShadow=
+
+`0 0 ${20+Math.random()*40}px rgba(212,175,55,.7)`;
+
+});
+
+},1200);
+
+/*=========================
+Console Signature
+=========================*/
+
+console.log(
+
+"%cA Motion of Heritage",
+
+"color:#D4AF37;font-size:24px;font-weight:bold;"
+
+);
+
+console.log(
+
+"%cCrafted with Premium UI",
+
+"color:#ffffff;font-size:16px;"
+
+);
